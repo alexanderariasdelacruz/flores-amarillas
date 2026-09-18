@@ -1,40 +1,10 @@
-// ========================================
-// ELEMENTOS
-// ========================================
+/* =========================================
+   ESTRELLAS
+========================================= */
 
-const intro = document.getElementById("intro");
-const startBtn = document.getElementById("startBtn");
+const space = document.getElementById("space");
 
-const game = document.getElementById("game");
-
-const letter = document.getElementById("letter");
-const key = document.getElementById("key");
-
-const modal = document.getElementById("modal");
-const modalContent = document.getElementById("modalContent");
-
-const actionBtn = document.getElementById("actionBtn");
-const closeBtn = document.getElementById("closeBtn");
-
-const final = document.getElementById("final");
-
-const finalText = document.getElementById("finalText");
-
-
-// ========================================
-// ESTADO DEL JUEGO
-// ========================================
-
-let etapa = 0;
-
-
-// ========================================
-// ESTRELLAS
-// ========================================
-
-const stars = document.getElementById("stars");
-
-for (let i = 0; i < 150; i++) {
+for (let i = 0; i < 130; i++) {
 
     const star = document.createElement("div");
 
@@ -49,476 +19,292 @@ for (let i = 0; i < 150; i++) {
     star.style.animationDelay =
         Math.random() * 3 + "s";
 
-    stars.appendChild(star);
+    space.appendChild(star);
 }
 
 
-// ========================================
-// COMENZAR
-// ========================================
-
-startBtn.addEventListener("click", () => {
-
-    intro.classList.add("hidden");
-
-    game.classList.remove("hidden");
-
-});
-
-
-// ========================================
-// ABRIR CARTA
-// ========================================
-
-letter.addEventListener("click", () => {
-
-    letter.classList.add("hidden");
-
-    modalContent.innerHTML = `
-
-        <h2>💌 La primera pista</h2>
-
-        <p>
-            Si estás leyendo esto, significa que
-            aceptaste la misión.
-            <br><br>
-
-            Pero antes de buscar cualquier cofre,
-            necesitas algo.
-            <br><br>
-
-            <b>Una llave.</b>
-            <br><br>
-
-            La encontrarás aquí mismo.
-        </p>
-
-    `;
-
-    actionBtn.innerText =
-        "Tomar la llave 🔑";
-
-    modal.classList.remove("hidden");
-
-    etapa = 1;
-
-});
-
-
-// ========================================
-// BOTÓN DEL MODAL
-// ========================================
-
-actionBtn.addEventListener("click", () => {
-
-    modal.classList.add("hidden");
-
-    if (etapa === 1) {
-
-        key.classList.remove("hidden");
-
-        etapa = 2;
-
-    }
-
-});
-
-
-// ========================================
-// TOMAR LLAVE
-// ========================================
-
-key.addEventListener("click", () => {
-
-    key.classList.add("hidden");
-
-    modalContent.innerHTML = `
-
-        <h2>🔑 Primera llave obtenida</h2>
-
-        <p>
-
-            Ahora comienza realmente la búsqueda.
-
-            <br><br>
-
-            Hay tres cofres.
-
-            <br><br>
-
-            Pero solamente uno puede ser
-            abierto con esta llave.
-
-            <br><br>
-
-            Resuelve el acertijo.
-
-            <br><br>
-
-            <b>
-            "No tengo pies, pero siempre avanzo.
-            <br>
-            No tengo boca, pero cuento historias.
-            <br>
-            Todos me miran,
-            <br>
-            pero nadie puede detenerme."
-            </b>
-
-            <br><br>
-
-            ¿Qué soy?
-
-        </p>
-
-    `;
-
-    actionBtn.innerText =
-        "Ya sé la respuesta";
-
-    modal.classList.remove("hidden");
-
-    etapa = 3;
-
-});
-
-
-// ========================================
-// COFRES
-// ========================================
-
-const chests =
-    document.querySelectorAll(".chest");
-
-
-chests.forEach(chest => {
-
-    chest.addEventListener("click", () => {
-
-        const id =
-            chest.dataset.id;
-
-
-        // ------------------------------
-        // COFRE 1
-        // ------------------------------
-
-        if (id === "1" && etapa === 3) {
-
-            abrirCofre(chest);
-
-            setTimeout(() => {
-
-                modalContent.innerHTML = `
-
-                    <h2>⏳ ¡Correcto!</h2>
-
-                    <p>
-
-                        La respuesta era:
-
-                        <br><br>
-
-                        <b>EL TIEMPO.</b>
-
-                        <br><br>
-
-                        El primer cofre se abre.
-
-                        <br><br>
-
-                        Pero dentro no hay un tesoro...
-
-                        <br><br>
-
-                        Hay otra pista.
-
-                        <br><br>
-
-                        <b>
-                        "Cuando la noche termina,
-                        aparezco sin que nadie me llame.
-                        No puedes tocarme,
-                        pero anuncio un nuevo comienzo."
-                        </b>
-
-                        <br><br>
-
-                        ¿Qué soy?
-
-                    </p>
-
-                `;
-
-                actionBtn.innerText =
-                    "Seguir la búsqueda";
-
-                modal.classList.remove("hidden");
-
-                etapa = 4;
-
-            }, 600);
-
-        }
-
-
-        // ------------------------------
-        // COFRE 2
-        // ------------------------------
-
-        else if (id === "2" && etapa === 4) {
-
-            abrirCofre(chest);
-
-            setTimeout(() => {
-
-                modalContent.innerHTML = `
-
-                    <h2>🌅 ¡Otra vez acertaste!</h2>
-
-                    <p>
-
-                        La respuesta era:
-
-                        <br><br>
-
-                        <b>EL AMANECER.</b>
-
-                        <br><br>
-
-                        Ya estás muy cerca.
-
-                        <br><br>
-
-                        Pero falta una última puerta.
-
-                        <br><br>
-
-                        Busca el cofre que no tiene número.
-
-                        <br><br>
-
-                        El que parece estar esperando
-                        solamente por ti.
-
-                    </p>
-
-                `;
-
-                actionBtn.innerText =
-                    "Ir al último cofre";
-
-                modal.classList.remove("hidden");
-
-                etapa = 5;
-
-            }, 600);
-
-        }
-
-
-        // ------------------------------
-        // COFRE FINAL
-        // ------------------------------
-
-        else if (id === "3" && etapa === 5) {
-
-            abrirCofre(chest);
-
-            setTimeout(() => {
-
-                modalContent.innerHTML = `
-
-                    <h2>🏆 Último acertijo</h2>
-
-                    <p>
-
-                        Esta es la última pregunta.
-
-                        <br><br>
-
-                        No soy un tesoro,
-
-                        <br>
-
-                        pero puedo hacer que
-                        un día normal se sienta diferente.
-
-                        <br><br>
-
-                        No peso nada.
-
-                        <br>
-
-                        No cuesta necesariamente nada.
-
-                        <br>
-
-                        Y cuando se comparte,
-                        puede quedarse en la memoria.
-
-                        <br><br>
-
-                        <b>
-                        ¿Qué soy?
-                        </b>
-
-                    </p>
-
-                `;
-
-                actionBtn.innerText =
-                    "Descubrir la sorpresa";
-
-                modal.classList.remove("hidden");
-
-                etapa = 6;
-
-            }, 600);
-
-        }
-
-    });
-
-});
-
-
-// ========================================
-// ABRIR COFRE
-// ========================================
-
-function abrirCofre(chest) {
-
-    const lock =
-        chest.querySelector(".lock");
-
-    lock.innerText = "🔓";
-
-    chest.style.transform =
-        "scale(1.12)";
-
-    setTimeout(() => {
-
-        chest.style.transform = "";
-
-    }, 400);
-
-}
-
-
-// ========================================
-// CONTINUAR DESDE ÚLTIMO ACERTIJO
-// ========================================
-
-actionBtn.addEventListener("click", () => {
-
-    if (etapa === 6) {
-
-        modal.classList.add("hidden");
-
-        mostrarFinal();
-
-    }
-
-});
-
-
-// ========================================
-// CERRAR MODAL
-// ========================================
-
-closeBtn.addEventListener("click", () => {
-
-    modal.classList.add("hidden");
-
-});
-
-
-// ========================================
-// FINAL
-// ========================================
-
-function mostrarFinal() {
-
-    final.classList.remove("hidden");
-
-    const texto =
-
-        "Después de tanto buscar, " +
-        "resolver acertijos y abrir cofres... " +
-        "resulta que el tesoro era simplemente " +
-        "un pequeño detalle para hacerte sonreír. " +
-        "😂💛";
-
-    escribirTexto(texto);
-
-    comenzarLluviaDeFlores();
-
-}
-
-
-// ========================================
-// TEXTO ANIMADO
-// ========================================
-
-function escribirTexto(texto) {
-
-    finalText.innerHTML = "";
-
-    let i = 0;
-
-    const escribir = setInterval(() => {
-
-        finalText.innerHTML +=
-            texto.charAt(i);
-
-        i++;
-
-        if (i >= texto.length) {
-
-            clearInterval(escribir);
-
-        }
-
-    }, 40);
-
-}
-
-
-// ========================================
-// LLUVIA DE FLORES
-// ========================================
-
-function comenzarLluviaDeFlores() {
-
-    setInterval(() => {
+/* =========================================
+   GIRASOLES ORBITANDO
+========================================= */
+
+const orbits =
+    document.querySelectorAll(".orbit");
+
+const flowerCounts = [
+    7,
+    9,
+    11,
+    13,
+    16
+];
+
+orbits.forEach((orbit, index) => {
+
+    const amount =
+        flowerCounts[index];
+
+    for (let i = 0; i < amount; i++) {
 
         const flower =
             document.createElement("div");
 
         flower.className =
-            "flower";
+            "orbit-flower";
 
-        flower.innerText = "🌻";
+        flower.textContent =
+            Math.random() > .25
+                ? "🌻"
+                : "✦";
+
+        const angle =
+            (360 / amount) * i;
+
+        const x =
+            Math.cos(angle * Math.PI / 180) * 50;
+
+        const y =
+            Math.sin(angle * Math.PI / 180) * 50;
 
         flower.style.left =
-            Math.random() * 100 + "vw";
+            `calc(50% + ${x}% - 17px)`;
 
-        flower.style.animationDuration =
-            (4 + Math.random() * 5) + "s";
+        flower.style.top =
+            `calc(50% + ${y}% - 17px)`;
 
-        flower.style.fontSize =
-            (30 + Math.random() * 30) + "px";
+        orbit.appendChild(flower);
+    }
 
-        document.getElementById("flowers")
-            .appendChild(flower);
+});
+
+
+/* =========================================
+   CAMBIO DE PANTALLA
+========================================= */
+
+const screen1 =
+    document.getElementById("screen1");
+
+const screen2 =
+    document.getElementById("screen2");
+
+
+document
+    .getElementById("start")
+    .addEventListener("click", () => {
+
+        screen1.classList.remove("active");
+        screen1.classList.add("hidden");
 
         setTimeout(() => {
 
-            flower.remove();
+            screen2.classList.remove("hidden");
+            screen2.classList.add("active");
 
-        }, 10000);
+            escribirCarta();
 
-    }, 300);
+            lluvia();
 
+        }, 500);
+
+    });
+
+
+/* Volver */
+
+document
+    .getElementById("back")
+    .addEventListener("click", () => {
+
+        screen2.classList.remove("active");
+        screen2.classList.add("hidden");
+
+        screen1.classList.remove("hidden");
+        screen1.classList.add("active");
+
+    });
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+const mensaje = `
+Hoy quería regalarte algo diferente. 🌻
+
+No solamente unas flores,
+sino todo un pequeño universo lleno de ellas.
+
+Porque a veces un detalle no tiene que ser enorme
+para significar algo.
+
+Solo quería recordarte que eres una persona
+especial y que espero que siempre tengas
+razones para sonreír.
+
+Así que aquí tienes unas cuantas flores amarillas,
+un pequeño universo hecho especialmente para ti. 💛
+
+Espero que este detalle te guste
+y que te saque aunque sea una pequeña sonrisa.
+
+Gracias por ser una buena amiga.
+
+Nunca dejes de brillar. ✨
+
+Con cariño,
+un amigo que te aprecia mucho. 💙
+`;
+
+
+const texto =
+    document.getElementById("texto");
+
+
+function escribirCarta() {
+
+    texto.innerHTML = "";
+
+    let i = 0;
+
+    function escribir() {
+
+        if (i < mensaje.length) {
+
+            const letra =
+                mensaje.charAt(i);
+
+            texto.innerHTML +=
+                letra === "\n"
+                    ? "<br>"
+                    : letra;
+
+            i++;
+
+            setTimeout(
+                escribir,
+                28
+            );
+        }
+    }
+
+    escribir();
 }
+
+
+/* =========================================
+   LLUVIA DE FLORES
+========================================= */
+
+function lluvia() {
+
+    for (let i = 0; i < 55; i++) {
+
+        setTimeout(() => {
+
+            const flower =
+                document.createElement("div");
+
+            flower.className =
+                "falling";
+
+            flower.textContent =
+                Math.random() > .2
+                    ? "🌻"
+                    : "💛";
+
+            flower.style.left =
+                Math.random() * 100 + "vw";
+
+            flower.style.fontSize =
+                14 +
+                Math.random() * 22 +
+                "px";
+
+            flower.style.animationDuration =
+                3 +
+                Math.random() * 5 +
+                "s";
+
+            document.body.appendChild(
+                flower
+            );
+
+            setTimeout(() => {
+
+                flower.remove();
+
+            }, 8000);
+
+        }, i * 100);
+    }
+}
+
+
+/* =========================================
+   GUARDAR RESPUESTA
+========================================= */
+
+const respuesta =
+    document.getElementById("respuesta");
+
+const result =
+    document.getElementById("replyResult");
+
+
+document
+    .getElementById("send")
+    .addEventListener("click", () => {
+
+        const textoRespuesta =
+            respuesta.value.trim();
+
+
+        if (!textoRespuesta) {
+
+            respuesta.focus();
+
+            return;
+        }
+
+
+        /*
+            Guarda la respuesta
+            en el navegador.
+        */
+
+        localStorage.setItem(
+            "respuesta_flores",
+            textoRespuesta
+        );
+
+
+        result.style.display =
+            "block";
+
+        result.innerHTML =
+            "🌻 Respuesta guardada. " +
+            "Gracias por tomarte el tiempo " +
+            "de escribirla. 💛";
+
+
+        lluvia();
+
+    });
+
+
+/* =========================================
+   RECUPERAR RESPUESTA
+========================================= */
+
+const guardada =
+    localStorage.getItem(
+        "respuesta_flores"
+    );
+
+
+if (guardada) {
+
+    respuesta.value =
+        guardada;
+
+} 
