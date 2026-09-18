@@ -4,562 +4,843 @@
     padding: 0;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
 body {
     min-height: 100vh;
     overflow: hidden;
-    background:
-        radial-gradient(circle at center, #171711 0%, #050505 55%, #000 100%);
+
+    font-family: "Segoe UI", sans-serif;
+
     color: white;
-    font-family: Arial, sans-serif;
-}
-
-
-/* ESTRELLAS */
-
-#stars {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-}
-
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 2s infinite alternate;
-}
-
-
-/* INTRO */
-
-.screen {
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    padding: 25px;
-}
-
-.intro-icon {
-    font-size: 100px;
-
-    filter:
-        drop-shadow(0 0 15px #ffd900)
-        drop-shadow(0 0 35px #ffd900);
-
-    animation: float 3s ease-in-out infinite;
-}
-
-.screen h1 {
-    margin-top: 25px;
-
-    font-size: 42px;
-
-    color: #ffd900;
-
-    text-shadow:
-        0 0 10px #ffd900,
-        0 0 25px #ffd900;
-}
-
-.screen p {
-    margin-top: 15px;
-
-    color: #aaa;
-
-    line-height: 1.6;
-}
-
-
-/* BOTONES */
-
-button {
-    margin-top: 25px;
-
-    padding: 14px 25px;
-
-    border-radius: 30px;
-
-    border: 1px solid #ffd900;
-
-    background: transparent;
-
-    color: #ffd900;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-button:hover {
-    background: #ffd900;
-
-    color: #000;
-
-    box-shadow:
-        0 0 15px #ffd900,
-        0 0 35px #ffd900;
-
-    transform: scale(1.05);
-}
-
-
-/* JUEGO */
-
-#game {
-    height: 100vh;
-
-    position: relative;
-}
-
-.hidden {
-    display: none !important;
-}
-
-
-.title {
-    position: absolute;
-
-    top: 25px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    color: #777;
-
-    font-size: 12px;
-
-    letter-spacing: 4px;
-}
-
-.title span {
-    color: #ffd900;
-}
-
-
-/* CARTA */
-
-.letter {
-    position: absolute;
-
-    left: 50%;
-    top: 43%;
-
-    transform: translate(-50%, -50%);
-
-    width: 290px;
-
-    padding: 35px 25px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(145deg, #181818, #0c0c0c);
-
-    border:
-        1px solid rgba(255, 217, 0, .7);
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 0 25px rgba(255, 217, 0, .15);
-
-    cursor: pointer;
-
-    animation: float 3s ease-in-out infinite;
-}
-
-.wax {
-    font-size: 50px;
-
-    margin-bottom: 15px;
-}
-
-.letter h2 {
-    color: #ffd900;
-}
-
-.letter p {
-    margin-top: 12px;
-
-    color: #999;
-
-    line-height: 1.5;
-}
-
-
-/* LLAVE */
-
-.key {
-    position: absolute;
-
-    left: 50%;
-    top: 43%;
-
-    transform: translate(-50%, -50%);
-
-    font-size: 75px;
-
-    cursor: pointer;
-
-    filter:
-        drop-shadow(0 0 10px #ffd900)
-        drop-shadow(0 0 30px #ffd900);
-
-    animation:
-        appear .8s ease,
-        float 3s ease-in-out infinite;
-}
-
-
-/* COFRES */
-
-.chest {
-    position: absolute;
-
-    text-align: center;
-
-    cursor: pointer;
-
-    transition: .4s;
-}
-
-.chest:hover {
-    transform: scale(1.1) translateY(-8px);
-}
-
-.lock {
-    font-size: 35px;
-}
-
-.box {
-    font-size: 65px;
-
-    filter:
-        drop-shadow(0 0 10px rgba(255, 217, 0, .2));
-}
-
-.chest span {
-    display: block;
-
-    margin-top: 4px;
-
-    color: #666;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-}
-
-
-/* POSICIONES */
-
-.chest1 {
-    left: 12%;
-    top: 25%;
-}
-
-.chest2 {
-    right: 13%;
-    top: 30%;
-}
-
-.chest3 {
-    left: 50%;
-    bottom: 9%;
-
-    transform: translateX(-50%);
-
-    opacity: .55;
-}
-
-.chest3:hover {
-    transform: translateX(-50%) scale(1.1);
-}
-
-
-/* MODAL */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    background: rgba(0,0,0,.78);
-
-    z-index: 20;
-}
-
-.modal-box {
-    width: 90%;
-
-    max-width: 500px;
-
-    padding: 35px 25px;
-
-    background: #101010;
-
-    border:
-        1px solid #ffd900;
-
-    border-radius: 20px;
-
-    text-align: center;
-
-    box-shadow:
-        0 0 35px rgba(255,217,0,.2);
-
-    animation: appear .5s ease;
-}
-
-.modal-box h2 {
-    color: #ffd900;
-
-    margin-bottom: 18px;
-}
-
-.modal-box p {
-    color: #ccc;
-
-    line-height: 1.7;
-
-    font-size: 17px;
-}
-
-.modal-box b {
-    color: #ffd900;
-}
-
-.close {
-    position: absolute;
-
-    margin: 0;
-
-    top: 15px;
-    right: 20px;
-
-    border: none;
-
-    font-size: 28px;
-}
-
-
-/* FINAL */
-
-.final {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 100;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
 
     background:
         radial-gradient(
-            circle,
-            #3d3508 0%,
-            #111000 45%,
-            #000 100%
+            circle at center,
+            #102d4d 0%,
+            #061326 35%,
+            #01050d 75%
         );
 }
 
-.final-content {
-    width: 90%;
 
-    max-width: 650px;
+/* =========================================
+   FONDO
+========================================= */
 
-    text-align: center;
+.space {
+    position: fixed;
+    inset: 0;
 
-    animation: appear 2s ease;
-}
-
-.big-flower {
-    font-size: 110px;
-
-    filter:
-        drop-shadow(0 0 20px #ffd900)
-        drop-shadow(0 0 45px #ffd900);
-
-    animation: heartbeat 2s infinite;
-}
-
-.final h1 {
-    margin: 20px 0;
-
-    font-size: 48px;
-
-    color: #ffd900;
-
-    text-shadow: 0 0 20px #ffd900;
-}
-
-.final p {
-    color: #ddd;
-
-    font-size: 18px;
-
-    line-height: 1.8;
-}
-
-.final-line {
-    width: 80px;
-
-    height: 1px;
-
-    margin: 25px auto;
-
-    background: #ffd900;
-
-    box-shadow: 0 0 10px #ffd900;
-}
-
-.final h3 {
-    color: #ffd900;
-}
-
-
-/* FLORES */
-
-.flower {
-    position: absolute;
-
-    font-size: 45px;
-
-    animation: flowerUp linear forwards;
+    overflow: hidden;
 
     pointer-events: none;
 }
 
+.star {
+    position: absolute;
 
-/* ANIMACIONES */
+    width: 2px;
+    height: 2px;
 
-@keyframes float {
+    border-radius: 50%;
 
-    0%, 100% {
-        transform: translate(-50%, -50%);
-    }
+    background: white;
 
-    50% {
-        transform: translate(-50%, calc(-50% - 15px));
-    }
-}
+    opacity: .5;
 
-@keyframes appear {
-
-    from {
-        opacity: 0;
-
-        transform: scale(.5);
-    }
-
-    to {
-        opacity: 1;
-
-        transform: scale(1);
-    }
+    animation: twinkle 2s infinite alternate;
 }
 
 @keyframes twinkle {
 
     from {
-        opacity: .2;
+        opacity: .15;
+        transform: scale(.6);
     }
 
     to {
         opacity: 1;
+        transform: scale(1.5);
     }
 }
 
-@keyframes heartbeat {
 
-    0%,100% {
-        transform: scale(1);
+.nebula {
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: #1767a8;
+
+    filter: blur(140px);
+
+    opacity: .08;
+
+    animation: nebulaMove 12s infinite alternate;
+}
+
+.nebula.one {
+    left: -180px;
+    top: -150px;
+}
+
+.nebula.two {
+    right: -180px;
+    bottom: -150px;
+
+    background: #ffc928;
+}
+
+@keyframes nebulaMove {
+
+    to {
+        transform:
+            translate(120px, 80px)
+            scale(1.2);
+    }
+}
+
+
+/* =========================================
+   PANTALLAS
+========================================= */
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 1s ease;
+}
+
+.screen.hidden {
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: scale(1.08);
+}
+
+.screen.active {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   UNIVERSO
+========================================= */
+
+.universe {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.universe-title {
+    position: absolute;
+
+    top: 7%;
+
+    width: 100%;
+
+    padding: 0 20px;
+
+    text-align: center;
+
+    z-index: 20;
+}
+
+.universe-title h1 {
+    font-size: clamp(26px, 8vw, 42px);
+
+    text-shadow:
+        0 0 25px rgba(255, 213, 42, .5);
+}
+
+.universe-title span {
+    color: #ffd52a;
+}
+
+.universe-title p {
+    margin-top: 8px;
+
+    color: #9ebbd8;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   GIRASOL CENTRAL
+========================================= */
+
+.sunflower {
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: planetFloat 4s ease-in-out infinite;
+}
+
+.sunflower::before {
+    content: "";
+
+    position: absolute;
+
+    width: 165px;
+    height: 165px;
+
+    border-radius: 50%;
+
+    background: #ffc928;
+
+    filter: blur(30px);
+
+    opacity: .35;
+}
+
+.sunflower-center {
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #211508 20%,
+            #51320c 45%,
+            #160d05 70%
+        );
+
+    box-shadow:
+        0 0 25px #ffcf2f,
+        inset 0 0 20px #000;
+
+    z-index: 4;
+}
+
+
+.petal {
+    position: absolute;
+
+    width: 45px;
+    height: 82px;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+        linear-gradient(
+            #ffe45b,
+            #f4a900
+        );
+
+    transform-origin:
+        50% 100px;
+
+    box-shadow:
+        0 0 12px rgba(255, 196, 0, .5);
+}
+
+.petal:nth-child(1) {
+    transform: rotate(0deg) translateY(-58px);
+}
+
+.petal:nth-child(2) {
+    transform: rotate(30deg) translateY(-58px);
+}
+
+.petal:nth-child(3) {
+    transform: rotate(60deg) translateY(-58px);
+}
+
+.petal:nth-child(4) {
+    transform: rotate(90deg) translateY(-58px);
+}
+
+.petal:nth-child(5) {
+    transform: rotate(120deg) translateY(-58px);
+}
+
+.petal:nth-child(6) {
+    transform: rotate(150deg) translateY(-58px);
+}
+
+.petal:nth-child(7) {
+    transform: rotate(180deg) translateY(-58px);
+}
+
+.petal:nth-child(8) {
+    transform: rotate(210deg) translateY(-58px);
+}
+
+.petal:nth-child(9) {
+    transform: rotate(240deg) translateY(-58px);
+}
+
+.petal:nth-child(10) {
+    transform: rotate(270deg) translateY(-58px);
+}
+
+.petal:nth-child(11) {
+    transform: rotate(300deg) translateY(-58px);
+}
+
+.petal:nth-child(12) {
+    transform: rotate(330deg) translateY(-58px);
+}
+
+
+@keyframes planetFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(-7px)
+            rotate(-2deg);
     }
 
     50% {
-        transform: scale(1.15);
+        transform:
+            translateY(7px)
+            rotate(2deg);
     }
 }
 
-@keyframes flowerUp {
+
+/* =========================================
+   ÓRBITAS
+========================================= */
+
+.orbit {
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(255, 211, 53, .25);
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+
+.orbit1 {
+    width: 280px;
+    height: 150px;
+
+    animation:
+        orbitRotate 14s linear infinite;
+}
+
+.orbit2 {
+    width: 360px;
+    height: 200px;
+
+    animation:
+        orbitRotate 19s linear infinite reverse;
+}
+
+.orbit3 {
+    width: 440px;
+    height: 250px;
+
+    animation:
+        orbitRotate 25s linear infinite;
+}
+
+.orbit4 {
+    width: 530px;
+    height: 310px;
+
+    animation:
+        orbitRotate 31s linear infinite reverse;
+}
+
+.orbit5 {
+    width: 620px;
+    height: 370px;
+
+    animation:
+        orbitRotate 38s linear infinite;
+}
+
+
+@keyframes orbitRotate {
 
     from {
         transform:
-            translateY(100vh)
+            translate(-50%, -50%)
             rotate(0deg);
-
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 1;
     }
 
     to {
         transform:
-            translateY(-120vh)
+            translate(-50%, -50%)
             rotate(360deg);
+    }
+}
+
+
+/* Flores que orbitan */
+
+.orbit-flower {
+    position: absolute;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(255, 208, 30, .7)
+        );
+}
+
+
+/* =========================================
+   BOTÓN INICIAL
+========================================= */
+
+.start {
+    position: absolute;
+
+    bottom: 9%;
+
+    z-index: 30;
+
+    border:
+        1px solid
+        rgba(255, 213, 42, .7);
+
+    background:
+        rgba(5, 12, 25, .7);
+
+    color: #ffd52a;
+
+    padding: 14px 30px;
+
+    border-radius: 40px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 213, 42, .15);
+
+    transition: .3s;
+}
+
+.start:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 35px
+        rgba(255, 213, 42, .4);
+}
+
+
+/* =========================================
+   SEGUNDA PANTALLA
+========================================= */
+
+.second {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 40px 15px 70px;
+}
+
+
+.back {
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+
+    z-index: 50;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .2);
+
+    background:
+        rgba(2, 8, 18, .7);
+
+    color: white;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   FLORES FLOTANTES
+========================================= */
+
+.floating-flower {
+    position: absolute;
+
+    font-size: 30px;
+
+    animation:
+        floatAround 5s
+        ease-in-out
+        infinite alternate;
+
+    opacity: .8;
+
+    pointer-events: none;
+}
+
+@keyframes floatAround {
+
+    from {
+        transform:
+            translateY(-15px)
+            rotate(-10deg);
+    }
+
+    to {
+        transform:
+            translateY(15px)
+            rotate(15deg);
+    }
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+.card {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(92vw, 500px);
+
+    margin: 50px auto 0;
+
+    padding: 30px 24px;
+
+    background:
+        linear-gradient(
+            rgba(255, 253, 241, .97),
+            rgba(250, 244, 216, .97)
+        );
+
+    color: #202020;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, .6),
+
+        0 0 30px
+        rgba(255, 211, 42, .15);
+}
+
+.card h2 {
+    text-align: center;
+
+    color: #bd8d00;
+
+    margin-bottom: 20px;
+}
+
+
+#texto {
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    min-height: 280px;
+}
+
+
+/* =========================================
+   RESPUESTA
+========================================= */
+
+.response {
+    position: relative;
+
+    z-index: 15;
+
+    width: min(92vw, 500px);
+
+    margin: 25px auto;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(5, 15, 29, .88);
+
+    border:
+        1px solid
+        rgba(255, 211, 42, .25);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, .4);
+}
+
+.response h3 {
+    color: #ffd52a;
+
+    margin-bottom: 8px;
+}
+
+.response p {
+    color: #9db9d5;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+
+textarea {
+    width: 100%;
+
+    min-height: 120px;
+
+    resize: none;
+
+    border:
+        1px solid
+        rgba(255, 213, 42, .25);
+
+    border-radius: 12px;
+
+    padding: 13px;
+
+    background: #020914;
+
+    color: white;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+}
+
+textarea:focus {
+    border-color: #ffd52a;
+
+    box-shadow:
+        0 0 15px
+        rgba(255, 213, 42, .12);
+}
+
+
+.send {
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    padding: 12px 22px;
+
+    background: #ffd52a;
+
+    color: #151515;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.reply-result {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 213, 42, .08);
+
+    border:
+        1px solid
+        rgba(255, 213, 42, .2);
+
+    color: #ffe99a;
+}
+
+
+/* =========================================
+   COFRES
+========================================= */
+
+.chest {
+    position: absolute;
+
+    z-index: 5;
+
+    font-size: 42px;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255, 200, 40, .6)
+        );
+
+    animation:
+        chestFloat 4s
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes chestFloat {
+
+    from {
+        transform:
+            translateY(-12px)
+            rotate(-4deg);
+    }
+
+    to {
+        transform:
+            translateY(12px)
+            rotate(4deg);
+    }
+}
+
+
+/* =========================================
+   FLORES QUE CAEN
+========================================= */
+
+.falling {
+    position: fixed;
+
+    top: -40px;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall {
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
 
         opacity: 0;
     }
 }
 
 
-/* CELULAR */
+/* =========================================
+   CELULAR
+========================================= */
 
-@media(max-width:600px) {
+@media(max-width: 600px) {
 
-    .screen h1 {
-        font-size: 32px;
+    .sunflower {
+        transform: scale(.82);
     }
 
-    .intro-icon {
-        font-size: 80px;
+    .orbit1 {
+        width: 250px;
+        height: 140px;
     }
 
-    .chest1 {
-        left: 7%;
-        top: 25%;
+    .orbit2 {
+        width: 320px;
+        height: 180px;
     }
 
-    .chest2 {
-        right: 7%;
-        top: 27%;
+    .orbit3 {
+        width: 390px;
+        height: 220px;
     }
 
-    .box {
-        font-size: 50px;
+    .orbit4 {
+        width: 470px;
+        height: 270px;
     }
 
-    .lock {
-        font-size: 28px;
+    .orbit5 {
+        width: 550px;
+        height: 320px;
     }
 
-    .final h1 {
-        font-size: 36px;
+    .card {
+        margin-top: 45px;
     }
 
-    .big-flower {
-        font-size: 85px;
+    #texto {
+        font-size: 15px;
     }
 }
+
