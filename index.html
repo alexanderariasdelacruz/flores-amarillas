@@ -1,138 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La búsqueda de las flores 🌻</title>
+
+    <title>Un pequeño universo 🌻</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="stars"></div>
-
-    <div id="intro" class="screen">
-        <div class="intro-icon">🌻</div>
-
-        <h1>Una pequeña misión</h1>
-
-        <p>
-            Hay algo escondido en algún lugar de este espacio.
-            <br>
-            Pero tendrás que encontrarlo.
-        </p>
-
-        <button id="startBtn">Comenzar misión ✨</button>
+    <!-- Fondo -->
+    <div class="space" id="space">
+        <div class="nebula one"></div>
+        <div class="nebula two"></div>
     </div>
 
 
-    <div id="game" class="hidden">
+    <!-- =========================
+         PANTALLA 1
+    ========================== -->
 
-        <div class="title">
-            <span>◆</span> LA BÚSQUEDA <span>◆</span>
-        </div>
+    <section class="screen active" id="screen1">
 
+        <div class="universe">
 
-        <!-- CARTA -->
-        <div id="letter" class="letter object">
+            <div class="universe-title">
 
-            <div class="wax">💛</div>
+                <h1>
+                    Un pequeño <span>universo</span> para ti 🌻
+                </h1>
 
-            <h2>Una carta</h2>
+                <p>
+                    Dicen que las flores también pueden tener
+                    su propio universo...
+                </p>
 
-            <p>
-                Hay algo escrito aquí...
-                <br>
-                <b>Toca para abrir.</b>
-            </p>
-
-        </div>
-
-
-        <!-- LLAVE -->
-        <div id="key" class="key hidden">
-            🔑
-        </div>
+            </div>
 
 
-        <!-- COFRE 1 -->
-        <div class="chest chest1" data-id="1">
-
-            <div class="lock">🔒</div>
-            <div class="box">📦</div>
-
-            <span>GUARDIÁN I</span>
-
-        </div>
+            <!-- Órbitas -->
+            <div class="orbit orbit1"></div>
+            <div class="orbit orbit2"></div>
+            <div class="orbit orbit3"></div>
+            <div class="orbit orbit4"></div>
+            <div class="orbit orbit5"></div>
 
 
-        <!-- COFRE 2 -->
-        <div class="chest chest2" data-id="2">
+            <!-- Girasol central -->
 
-            <div class="lock">🔒</div>
-            <div class="box">📦</div>
+            <div class="sunflower">
 
-            <span>GUARDIÁN II</span>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
 
-        </div>
+                <div class="sunflower-center"></div>
+
+            </div>
 
 
-        <!-- COFRE FINAL -->
-        <div class="chest chest3" data-id="3">
-
-            <div class="lock">🔒</div>
-            <div class="box">📦</div>
-
-            <span>???</span>
+            <button class="start" id="start">
+                Entrar al universo 🌻
+            </button>
 
         </div>
 
+    </section>
 
-        <!-- MODAL -->
 
-        <div id="modal" class="modal hidden">
+    <!-- =========================
+         PANTALLA 2
+    ========================== -->
 
-            <div class="modal-box">
+    <section class="screen hidden" id="screen2">
 
-                <button id="closeBtn" class="close">×</button>
+        <div class="second">
 
-                <div id="modalContent"></div>
+            <button class="back" id="back">
+                ← Volver
+            </button>
 
-                <button id="actionBtn">
-                    Continuar
+
+            <!-- Flores flotantes -->
+
+            <div class="floating-flower" style="left:5%;top:10%">🌻</div>
+            <div class="floating-flower" style="left:85%;top:13%">🌻</div>
+            <div class="floating-flower" style="left:12%;top:42%">🌻</div>
+            <div class="floating-flower" style="left:88%;top:45%">🌻</div>
+            <div class="floating-flower" style="left:4%;top:75%">🌻</div>
+            <div class="floating-flower" style="left:91%;top:72%">🌻</div>
+
+
+            <!-- Cofres -->
+
+            <div class="chest" style="left:5%;top:22%">🎁</div>
+            <div class="chest" style="right:7%;top:25%">🎁</div>
+            <div class="chest" style="left:8%;top:60%">🎁</div>
+            <div class="chest" style="right:8%;top:65%">🎁</div>
+            <div class="chest" style="left:25%;top:85%">🎁</div>
+            <div class="chest" style="right:25%;top:88%">🎁</div>
+
+
+            <!-- Carta -->
+
+            <div class="card">
+
+                <h2>🌻 Para ti 🌻</h2>
+
+                <p id="texto"></p>
+
+            </div>
+
+
+            <!-- Respuesta -->
+
+            <div class="response">
+
+                <h3>
+                    Ahora te toca a ti... 💌
+                </h3>
+
+                <p>
+                    Después de recibir este pequeño detalle,
+                    puedes dejarme tu respuesta aquí.
+                </p>
+
+                <textarea
+                    id="respuesta"
+                    placeholder="Escribe aquí lo que quieras decirme..."></textarea>
+
+                <button class="send" id="send">
+                    Guardar mi respuesta ✨
                 </button>
+
+                <div class="reply-result" id="replyResult"></div>
 
             </div>
 
         </div>
 
-    </div>
-
-
-    <!-- FINAL -->
-
-    <div id="final" class="final hidden">
-
-        <div id="flowers"></div>
-
-        <div class="final-content">
-
-            <div class="big-flower">🌻</div>
-
-            <h1>¡Lo encontraste!</h1>
-
-            <p id="finalText"></p>
-
-            <div class="final-line"></div>
-
-            <h3>Feliz Día de las Flores Amarillas 💛</h3>
-
-        </div>
-
-    </div>
+    </section>
 
 
     <script src="script.js"></script>
 
 </body>
 </html>
+
