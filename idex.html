@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La búsqueda de las flores 🌻</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="stars"></div>
+
+    <div id="intro" class="screen">
+        <div class="intro-icon">🌻</div>
+
+        <h1>Una pequeña misión</h1>
+
+        <p>
+            Hay algo escondido en algún lugar de este espacio.
+            <br>
+            Pero tendrás que encontrarlo.
+        </p>
+
+        <button id="startBtn">Comenzar misión ✨</button>
+    </div>
+
+
+    <div id="game" class="hidden">
+
+        <div class="title">
+            <span>◆</span> LA BÚSQUEDA <span>◆</span>
+        </div>
+
+
+        <!-- CARTA -->
+        <div id="letter" class="letter object">
+
+            <div class="wax">💛</div>
+
+            <h2>Una carta</h2>
+
+            <p>
+                Hay algo escrito aquí...
+                <br>
+                <b>Toca para abrir.</b>
+            </p>
+
+        </div>
+
+
+        <!-- LLAVE -->
+        <div id="key" class="key hidden">
+            🔑
+        </div>
+
+
+        <!-- COFRE 1 -->
+        <div class="chest chest1" data-id="1">
+
+            <div class="lock">🔒</div>
+            <div class="box">📦</div>
+
+            <span>GUARDIÁN I</span>
+
+        </div>
+
+
+        <!-- COFRE 2 -->
+        <div class="chest chest2" data-id="2">
+
+            <div class="lock">🔒</div>
+            <div class="box">📦</div>
+
+            <span>GUARDIÁN II</span>
+
+        </div>
+
+
+        <!-- COFRE FINAL -->
+        <div class="chest chest3" data-id="3">
+
+            <div class="lock">🔒</div>
+            <div class="box">📦</div>
+
+            <span>???</span>
+
+        </div>
+
+
+        <!-- MODAL -->
+
+        <div id="modal" class="modal hidden">
+
+            <div class="modal-box">
+
+                <button id="closeBtn" class="close">×</button>
+
+                <div id="modalContent"></div>
+
+                <button id="actionBtn">
+                    Continuar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FINAL -->
+
+    <div id="final" class="final hidden">
+
+        <div id="flowers"></div>
+
+        <div class="final-content">
+
+            <div class="big-flower">🌻</div>
+
+            <h1>¡Lo encontraste!</h1>
+
+            <p id="finalText"></p>
+
+            <div class="final-line"></div>
+
+            <h3>Feliz Día de las Flores Amarillas 💛</h3>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
